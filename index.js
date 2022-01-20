@@ -25,7 +25,7 @@ const persistRefreshToken = async (userId, refreshToken) => {
 };
 
 const refreshAccessToken = async (userId) => {
-  const currentRefreshToken = await getRefreshToken(28697229);
+  const currentRefreshToken = await getRefreshToken(userId);
 
   const data = {
     action: 'requesttoken',
