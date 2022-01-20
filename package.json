@@ -1,0 +1,29 @@
+{
+  "name": "trumpet",
+  "version": "1.0.0",
+  "description": "A webhook endpoint which also broadcasts the weight over MQTT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GuTsaV/trumpet.git"
+  },
+  "scripts": {
+    "start": "node -r dotenv/config index.js",
+    "lint": "eslint . --ext .js,.ts"
+  },
+  "author": "Gustav Ehrenborg",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "async-mqtt": "^2.6.1",
+    "axios": "^0.25.0",
+    "body-parser": "^1.19.1",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "qs": "^6.10.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
+  }
+}
