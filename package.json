@@ -1,7 +1,7 @@
 {
   "name": "trumpet",
   "version": "1.0.0",
-  "description": "A webhook endpoint which also broadcasts the weight over MQTT",
+  "description": "A Withings webhook endpoint for scales which also broadcasts the weight over MQTT",
   "main": "index.js",
   "repository": {
     "type": "git",
