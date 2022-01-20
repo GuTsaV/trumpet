@@ -34,7 +34,6 @@ In `automations.yml`, add the following, changing `topic`, `service` and `entity
   trigger:
     platform: mqtt
     topic: 'weight/current'
-    value_template: "{{ value_json }}"
   action:
     - service: tts.google_say
       entity_id: media_player.dining_room_speaker
