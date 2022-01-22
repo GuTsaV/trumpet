@@ -5,7 +5,7 @@ const mqtt = require('async-mqtt');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { BASE_URL, PORT } = process.env;
+const { CALLBACK_URL, PORT } = process.env;
 const { WITHINGS_CLIENT_ID, WITHINGS_CLIENT_SECRET } = process.env;
 const { MQTT_URL, MQTT_CHANNEL } = process.env;
 
@@ -20,9 +20,7 @@ const withingsAxios = axios.create({
 
 const getRefreshToken = async (userId) => fs.readFile(`./${userId}`, 'utf8');
 
-const persistRefreshToken = async (userId, refreshToken) => {
-  await fs.writeFile(`./${userId}`, refreshToken);
-};
+const persistRefreshToken = async (userId, refreshToken) => fs.writeFile(`./${userId}`, refreshToken);
 
 const refreshAccessToken = async (userId) => {
   const currentRefreshToken = await getRefreshToken(userId);
@@ -91,6 +89,6 @@ app.post('/withingsWebhook', async (request, response) => {
 
 app.get('/url', async (_, response) => {
   response.send(
-    `<a href="https://account.withings.com/oauth2_user/authorize2?response_type=code&client_id=${WITHINGS_CLIENT_ID}&state=whatever&scope=user.info,user.metrics&redirect_uri=${BASE_URL}/withingsWebhook">Click here</a>`,
+    `<a href="https://account.withings.com/oauth2_user/authorize2?response_type=code&client_id=${WITHINGS_CLIENT_ID}&state=whatever&scope=user.info,user.metrics&redirect_uri=${CALLBACK_URL}">Click here</a>`,
   );
 });
